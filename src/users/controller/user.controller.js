@@ -9,14 +9,14 @@ const seederService = require('../service/seeder-service')
 class UserController {
    handleError(error, res) {
       const status = error.status || 500;
-      console.error(error.message); // Log the error message
+      console.error(error.message);
       return res.status(status).json({
          success: false,
-         message: error.message || "Internal Server Error", // Provide a default message
+         message: error.message || "Internal Server Error",
       });
    };
 
-   async registerUser(req, res) {
+   registerUser = async (req, res) => {
       const { name, email, phone, position_id } = req.body;
       const photo = req.file;
 
@@ -30,11 +30,11 @@ class UserController {
             message: "New user successfully registered"
          });
       } catch (error) {
-         return handleError(error, res);
+         return this.handleError(error, res);
       }
    }
 
-   async getUsers(req, res, next) {
+   getUsers = async (req, res, next) => {
       let { page, count } = req.query;
 
       page = parseInt(page, 10) || 1;
@@ -61,11 +61,11 @@ class UserController {
             users,
          });
       } catch (error) {
-         return handleError(error, res);
+         return this.handleError(error, res);
       }
    }
 
-   async getUser(req, res, next) {
+   getUser = async (req, res, next) => {
       try {
          const userId = req.params.id;
          const user = await userService.getUserById(userId);
@@ -79,21 +79,21 @@ class UserController {
 
          res.status(200).json({ success: true, user });
       } catch (error) {
-         return handleError(error, res);
+         return this.handleError(error, res);
       }
    }
 
 
-   async getPositions(req, res, next) {
+   getPositions = async (req, res, next) => {
       try {
          const positions = await possitionService.getPositions()
          res.status(200).json({ success: true, positions });
       } catch (error) {
-         return handleError(error, res);
+         return this.handleError(error, res);
       }
    }
 
-   async getToken(req, res, next) {
+   getToken = async (req, res, next) => {
       try {
          const token = await tokenService.createTokenForRegistration()
          res.status(200).json({ success: true, token })
@@ -102,7 +102,7 @@ class UserController {
       }
    }
 
-   async generateInitialUsers(req, res, next) {
+   generateInitialUsers = async (req, res, next) => {
       try {
          const seed = await seederService.seedDatabase()
          res.status(200).json({ success: true })

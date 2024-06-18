@@ -88,12 +88,13 @@ class SeederService {
 
          for (let i = 0; i < 45; i++) {
             const name = this.generateRandomName();
-            const email = this.generateUniqueEmail(name);
+            const email = await this.generateUniqueEmail(name);
             const phone = this.generateRandomPhone();
             const position_id = this.generateRandomPositionId(positionCount);
             const photo = this.generateRandomAvatar();
             const registration_timestamp = this.generateRandomPastDate();
 
+            console.log(email)
             const query = `
                INSERT INTO users (name, email, phone, position_id, registration_timestamp, photo)
                VALUES ($1, $2, $3, $4, $5, $6);
