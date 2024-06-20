@@ -102,7 +102,7 @@ class UserService {
          return user?.rows?.[0];
       } catch (error) {
          console.error('Error getting user:', error);
-         throw error; // Rethrow the error to the caller
+         throw error;
       }
    }
 
