@@ -8,9 +8,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(cors({
    credentials: true,
-   origin: 'http://localhost:3000'
+   origin: ['http://localhost:3000', 'http://testsite7567.kesug.com'],
+   optionsSuccessStatus: 200
 }));
 
 app.use('/api/v1', userRoutes);
