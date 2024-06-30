@@ -11,7 +11,7 @@ app.use(cookieParser());
 
 app.use(cors({
    credentials: true,
-   origin: ['http://localhost:3000', 'http://testsite7567.kesug.com', 'https://testprojfront-7dyrtb2lt-cosm0dusts-projects.vercel.app', 'https://testprojfront.vercel.app/'],
+   origin: ['http://localhost:3000', 'http://testsite7567.kesug.com', 'https://testprojfront-7dyrtb2lt-cosm0dusts-projects.vercel.app', 'https://testprojfront.vercel.app', 'https://testprojfront-bv9m5hwfn-cosm0dusts-projects.vercel.app'],
    optionsSuccessStatus: 200
 }));
 
