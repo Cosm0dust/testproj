@@ -19,7 +19,6 @@ class UserController {
    registerUser = async (req, res) => {
       const { name, email, phone, position_id } = req.body;
       const photo = req.file;
-
       const token = req.headers['token'] || req.headers['Token'];
       try {
          const userId = await userService.registration(email, name, phone, position_id, token, photo);
